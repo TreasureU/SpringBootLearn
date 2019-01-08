@@ -1,4 +1,4 @@
-package com.example.demo.Redis;
+package com.example.demo.Redis.Jedis;
 
 import java.io.Serializable;
 

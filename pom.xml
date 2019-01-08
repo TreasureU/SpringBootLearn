@@ -54,23 +54,47 @@
             <version>1.3.2</version>
         </dependency>
     
-        <!-- redis支持：用于实现高并发场景的访问 -->
+        <!-- redis支持：用于实现高并发场景的访问，使用 jedis客户端 -->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-data-redis</artifactId>-->
+            <!--&lt;!&ndash;redis 高版本默认移除了 jedis支持，而使用 lettuce0core&ndash;&gt;-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>io.lettuce</groupId>-->
+                    <!--<artifactId>lettuce-core</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; 使用 jedis 作为 redis client &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>redis.clients</groupId>-->
+            <!--<artifactId>jedis</artifactId>-->
+        <!--</dependency>-->
+        
+        <!-- 【推荐】redis支持：用于实现高并发场景的访问，使用 lettuce客户端 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
-            <!--redis 高版本默认移除了 jedis支持，而使用 lettuce0core-->
-            <exclusions>
-                <exclusion>
-                    <groupId>io.lettuce</groupId>
-                    <artifactId>lettuce-core</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
-        <!-- 使用 jedis 作为 redis client -->
+        <!-- lettuce pool 缓存连接池 -->
         <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
         </dependency>
+        <!-- jackson json 优化缓存对象序列化 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <!--对象序列化-->
+        <dependency>
+            <groupId>de.gerdi-project</groupId>
+            <artifactId>GSON</artifactId>
+            <version>4.3.0</version>
+        </dependency>
+        
+        
         
         <!-- mysql数据库驱动，驱动版本与 mysql 版本映射关系：https://blog.csdn.net/hchhan/article/details/81106992-->
         <dependency>
@@ -79,12 +103,20 @@
             <version>5.1.21</version>
         </dependency>
     
+        <!--spring test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        
+    
+        <!--用于 properties 自动补全-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+
+
     </dependencies>
     
     <dependencyManagement>

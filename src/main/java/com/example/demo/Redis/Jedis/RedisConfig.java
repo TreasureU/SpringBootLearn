@@ -1,4 +1,4 @@
-package com.example.demo.Redis;
+package com.example.demo.Redis.Jedis;
 
 //import org.springframework.boot.context.properties.ConfigurationProperties;
 //import org.springframework.context.annotation.Bean;
